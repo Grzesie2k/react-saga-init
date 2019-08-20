@@ -1,7 +1,6 @@
 import React from 'react';
-import { Switch } from "react-router";
-import logo from './logo.svg';
 import './App.css';
+import logo from './logo.svg';
 
 const App: React.FC = () => {
   return (
@@ -20,7 +19,6 @@ const App: React.FC = () => {
           Learn React
         </a>
       </header>
-      <Switch />
     </div>
   );
 }
