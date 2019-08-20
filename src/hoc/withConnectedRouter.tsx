@@ -4,9 +4,15 @@ import * as React from "react";
 import { ComponentType } from "react";
 
 export default function <Props>(history: History) {
-    return (Component: ComponentType<Props>) => (props: Props) => (
-        <ConnectedRouter history={history}>
-            <Component {...props}/>
-        </ConnectedRouter>
-    );
+    return (WrappedComponent: ComponentType<Props>) => {
+        const Component: ComponentType<Props> = (props) => (
+            <ConnectedRouter history={history}>
+                <WrappedComponent {...props}/>
+            </ConnectedRouter>
+        );
+
+        Component.displayName = `withConnectedRouter(${WrappedComponent.displayName || WrappedComponent.name})`;
+
+        return Component;
+    }
 }
