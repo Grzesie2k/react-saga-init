@@ -1,8 +1,9 @@
 import { ComponentType, createElement, ReactElement } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import 'antd/dist/antd.css';
 import { compose } from "redux";
 import App from './components/App/App';
+import withAntdConfig from "./hoc/withAntdConfig";
 import withConnectedRouter from "./hoc/withConnectedRouter";
 import withReduxProvider from "./hoc/withReduxProvider";
 import * as serviceWorker from './serviceWorker';
@@ -19,6 +20,7 @@ const renderer: (c: ComponentType) => ReactElement = compose(
     withReduxProvider(store),
     withRouterProvider(history),
     withConnectedRouter(history),
+    withAntdConfig,
 );
 
 ReactDOM.render(
