@@ -10,25 +10,24 @@ import createStore from "./store/createStore";
 import withRouterProvider from "./hoc/withRouterProvider";
 import { createBrowserHistory } from 'history';
 
-(async () => {
-    const debug = process.env.NODE_ENV !== "production";
-    const history = createBrowserHistory();
-    const store = await createStore(history, debug);
+const debug = process.env.NODE_ENV !== "production";
+const history = createBrowserHistory();
+const store = createStore(history, debug);
 
-    const renderer: (c: ComponentType) => ReactElement = compose(
-        createElement,
-        withReduxProvider(store),
-        withRouterProvider(history),
-        withConnectedRouter(history),
-    );
+const renderer: (c: ComponentType) => ReactElement = compose(
+    createElement,
+    withReduxProvider(store),
+    withRouterProvider(history),
+    withConnectedRouter(history),
+);
 
-    ReactDOM.render(
-        renderer(App),
-        document.getElementById('root')
-    );
+ReactDOM.render(
+    renderer(App),
+    document.getElementById('root')
+);
 
-    // If you want your app to work offline and load faster, you can change
-    // unregister() to register() below. Note this comes with some pitfalls.
-    // Learn more about service workers: https://bit.ly/CRA-PWA
-    serviceWorker.unregister();
-})();
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
+

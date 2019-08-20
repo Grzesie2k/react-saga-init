@@ -6,7 +6,7 @@ import createSagaMiddleware from "redux-saga"
 import createStoreReducer from "./createStoreReducer";
 import storeSaga from "./storeSaga";
 
-export default async (history: History, debug: boolean) => {
+export default (history: History, debug: boolean) => {
     const storeReducer = createStoreReducer(history);
     const sagaMiddleware = createSagaMiddleware();
 
