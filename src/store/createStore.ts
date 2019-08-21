@@ -32,7 +32,7 @@ export default (history: History, debug: boolean) => {
 
     const store = createStore(storeReducer, storeEnhancer);
 
-    sagaMiddleware.run(storeSaga);
+    setTimeout(() => sagaMiddleware.run(storeSaga));
 
     return store;
 };
