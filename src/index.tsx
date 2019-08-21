@@ -4,6 +4,7 @@ import 'antd/dist/antd.css';
 import { compose } from "redux";
 import App from './components/App/App';
 import withErrorScreen from "./components/ErrorScreen/withErrorScreen";
+import withSession from "./components/Session/withSession";
 import withAntdConfig from "./hoc/withAntdConfig";
 import withConnectedRouter from "./hoc/withConnectedRouter";
 import withReduxProvider from "./hoc/withReduxProvider";
@@ -22,6 +23,7 @@ const renderer: (c: ComponentType) => ReactElement = compose(
     createElement,
     withReduxProvider(store),
     withErrorScreen,
+    withSession,
     withRouterProvider(history),
     withConnectedRouter(history),
     withAntdConfig,
