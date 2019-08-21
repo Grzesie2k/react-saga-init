@@ -1,14 +1,15 @@
 import { routerMiddleware } from "connected-react-router"
 import { History } from "history";
-import { applyMiddleware, createStore, StoreEnhancer } from "redux";
+import { applyMiddleware, createStore, DeepPartial, StoreEnhancer } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import createSagaMiddleware from "redux-saga"
 import { ErrorScreenType } from "../components/ErrorScreen/model/ErrorScreenType";
 import { showErrorScreen } from "../components/ErrorScreen/store/errorScreenActions";
 import createStoreReducer from "./createStoreReducer";
 import storeSaga from "./storeSaga";
+import { StoreState } from "./StoreState";
 
-export default (history: History, debug: boolean) => {
+export default (history: History, debug: boolean, preloadedState: DeepPartial<StoreState>) => {
     const storeReducer = createStoreReducer(history);
 
     const sagaMiddleware = createSagaMiddleware({
@@ -30,7 +31,7 @@ export default (history: History, debug: boolean) => {
         storeEnhancer = composeWithDevTools(storeEnhancer);
     }
 
-    const store = createStore(storeReducer, storeEnhancer);
+    const store = createStore(storeReducer, preloadedState, storeEnhancer);
 
     setTimeout(() => sagaMiddleware.run(storeSaga));
 

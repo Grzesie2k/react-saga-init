@@ -11,10 +11,12 @@ import * as serviceWorker from './serviceWorker';
 import createStore from "./store/createStore";
 import withRouterProvider from "./hoc/withRouterProvider";
 import { createBrowserHistory } from 'history';
+import preloadState from "./store/preloadState";
 
 const debug = process.env.NODE_ENV !== "production";
 const history = createBrowserHistory();
-const store = createStore(history, debug);
+const preloadedState = preloadState();
+const store = createStore(history, debug, preloadedState);
 
 const renderer: (c: ComponentType) => ReactElement = compose(
     createElement,
