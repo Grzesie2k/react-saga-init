@@ -4,7 +4,7 @@
 [redux-saga](https://redux-saga.js.org/) +
 [typescript](https://www.typescriptlang.org/) + 
 [react-helmet](https://github.com/nfl/react-helmet) +
-[react-scripts](https://github.com/facebook/create-react-app#readme)
+[react-scripts](https://github.com/facebook/create-react-app#readme) +
 [react-router](https://reacttraining.com/react-router/) +
 [connected-react-router](https://github.com/supasate/connected-react-router) + 
 [antd](https://ant.design/) +
