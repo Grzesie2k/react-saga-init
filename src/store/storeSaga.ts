@@ -1,5 +1,6 @@
-import { call } from "redux-saga/effects";
+import { fork } from "redux-saga/effects";
+import sessionSaga from "../components/Session/store/sessionSaga";
 
 export default function* () {
-    yield call(console.log, "Hello world from redux-saga");
+    yield fork(sessionSaga);
 }
