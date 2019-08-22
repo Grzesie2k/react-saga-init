@@ -1,7 +1,7 @@
 import { Button, Result } from "antd";
 import { AxiosResponse } from "axios";
 import { Component, default as React } from "react";
-import http from "../../services/http";
+import http from "../../http";
 import { ErrorScreenType } from "./model/ErrorScreenType";
 
 export interface ErrorScreenStateProps {

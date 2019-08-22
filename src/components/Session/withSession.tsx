@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ComponentType, FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import http from "../../services/http";
+import http from "../../http";
 import { clearSession, startSession } from "./store/sessionActions";
 import { getSessionToken } from "./store/sessionSelectors";
 
