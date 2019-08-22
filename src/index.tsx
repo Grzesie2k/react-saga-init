@@ -8,6 +8,7 @@ import withOfflineMask from "./components/OfflineMask/withOfflineMask";
 import withSession from "./components/Session/withSession";
 import withAntdConfig from "./hoc/withAntdConfig";
 import withConnectedRouter from "./hoc/withConnectedRouter";
+import withHelmet from "./hoc/withHelmet";
 import withReduxProvider from "./hoc/withReduxProvider";
 import * as serviceWorker from './serviceWorker';
 import createStore from "./store/createStore";
@@ -24,6 +25,7 @@ const renderer: (c: ComponentType) => ReactElement = compose(
     createElement,
     withReduxProvider(store),
     withErrorScreen,
+    withHelmet,
     withSession,
     withRouterProvider(history),
     withConnectedRouter(history),

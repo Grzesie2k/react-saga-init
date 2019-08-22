@@ -3,7 +3,7 @@
 [redux](https://redux.js.org/) +
 [redux-saga](https://redux-saga.js.org/) +
 [typescript](https://www.typescriptlang.org/) + 
-[react-helmet](https://github.com/nfl/react-helmet) +
+[react-helmet-async](https://github.com/staylor/react-helmet-async) +
 [react-scripts](https://github.com/facebook/create-react-app#readme) +
 [react-router](https://reacttraining.com/react-router/) +
 [connected-react-router](https://github.com/supasate/connected-react-router) + 
