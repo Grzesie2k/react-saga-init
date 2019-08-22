@@ -14,4 +14,5 @@
  * keep in sync react-router and redux state
  * keep API session token synchronized between redux, axios and sessionStorage
  * catch all errors and unhandled promises rejections and display error page
+ * display mask with message when going offline
  * catch all 5xx API responses and display error page
