@@ -1,10 +1,10 @@
-import { Layout } from "antd";
+import { Col, Layout, Row } from "antd";
 import * as React from "react";
 import { CSSProperties, FC, useMemo } from "react";
-import {Helmet} from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 import styles from "./blankLayout.module.css";
 
-const {Content} = Layout;
+const {Content, Footer} = Layout;
 
 interface BlankLayoutProps {
     /**
@@ -17,7 +17,7 @@ interface BlankLayoutProps {
 const BlankLayout: FC<BlankLayoutProps> = (props) => {
     const contentStyle = useMemo((): CSSProperties => ({
         maxWidth: props.width || 420,
-    }),[props.width]);
+    }), [props.width]);
 
     return (
         <Layout className={styles.layout}>
@@ -25,9 +25,21 @@ const BlankLayout: FC<BlankLayoutProps> = (props) => {
                 <title>{props.title}</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             </Helmet>
-            <Content style={contentStyle}>
-                {props.children}
-            </Content>
+            <div>
+                <Content style={contentStyle}>
+                    {props.children}
+                </Content>
+                <Footer className={styles.footer}>
+                    <Row>
+                        <Col xs={12} className={styles.leftFooter}>
+                            &copy;{new Date().getFullYear()}
+                        </Col>
+                        <Col xs={12} className={styles.rightFooter}>
+                            {process.env.REACT_APP_VERSION}
+                        </Col>
+                    </Row>
+                </Footer>
+            </div>
         </Layout>
     );
 };

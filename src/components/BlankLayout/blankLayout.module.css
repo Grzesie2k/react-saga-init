@@ -5,3 +5,16 @@
     justify-content: center;
     flex-direction: row;
 }
+
+.footer {
+    padding: 0 8px;
+    opacity: 0.5;
+    font-size: 0.8rem;
+}
+.leftFooter {
+    text-align: left;
+}
+
+.rightFooter {
+    text-align: right;
+}
