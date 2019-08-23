@@ -23,6 +23,7 @@ const BlankLayout: FC<BlankLayoutProps> = (props) => {
         <Layout className={styles.layout}>
             <Helmet>
                 <title>{props.title}</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             </Helmet>
             <Content style={contentStyle}>
                 {props.children}
