@@ -1,6 +1,8 @@
-import { ComponentType, createElement, ReactElement } from 'react';
-import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
+import { createBrowserHistory } from 'history';
+import React, { ComponentType } from 'react';
+import ReactDOM from 'react-dom';
+import { AppContainer } from "react-hot-loader";
 import { compose } from "redux";
 import App from './components/App/App';
 import withErrorScreen from "./components/ErrorScreen/withErrorScreen";
@@ -10,10 +12,9 @@ import withAntdConfig from "./hoc/withAntdConfig";
 import withConnectedRouter from "./hoc/withConnectedRouter";
 import withHelmet from "./hoc/withHelmet";
 import withReduxProvider from "./hoc/withReduxProvider";
+import withRouterProvider from "./hoc/withRouterProvider";
 import * as serviceWorker from './serviceWorker';
 import createStore from "./store/createStore";
-import withRouterProvider from "./hoc/withRouterProvider";
-import { createBrowserHistory } from 'history';
 import preloadState from "./store/preloadState";
 
 const debug = process.env.NODE_ENV !== "production";
@@ -21,8 +22,7 @@ const history = createBrowserHistory();
 const preloadedState = preloadState();
 const store = createStore(history, debug, preloadedState);
 
-const renderer: (c: ComponentType) => ReactElement = compose(
-    createElement,
+const renderer: (c: ComponentType) => ComponentType = compose(
     withReduxProvider(store),
     withErrorScreen,
     withHelmet,
@@ -33,10 +33,21 @@ const renderer: (c: ComponentType) => ReactElement = compose(
     withOfflineMask,
 );
 
-ReactDOM.render(
-    renderer(App),
-    document.getElementById('root')
-);
+const render = () => {
+    const Main = renderer(App);
+
+    ReactDOM.render((
+        <AppContainer>
+            <Main />
+        </AppContainer>
+    ), document.getElementById("root"));
+};
+
+if ((module as any).hot) {
+    (module as any).hot.accept(`./components/App/App`, render);
+}
+
+render();
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
