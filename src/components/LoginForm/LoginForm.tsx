@@ -1,4 +1,4 @@
-import { Button, Form, Icon, Input } from "antd";
+import { Alert, Button, Form, Icon, Input } from "antd";
 import Checkbox from "antd/es/checkbox";
 import { FormComponentProps } from "antd/lib/form";
 import * as React from "react";
@@ -6,9 +6,24 @@ import { FC } from "react";
 import { emailRule, requiredRule } from "../../validationRules";
 import styles from "./loginForm.module.css";
 
-const LoginForm: FC<FormComponentProps> = ({form}) => {
+interface LoginFormStateProps {
+    invalidCredentials: boolean;
+}
+
+type LoginFormProps = LoginFormStateProps & FormComponentProps;
+
+const LoginForm: FC<LoginFormProps> = ({form, invalidCredentials}) => {
     return (
         <Form>
+            {invalidCredentials ? (
+                <Alert
+                    className={styles.message}
+                    showIcon
+                    type="error"
+                    message="Niepoprawne dane logowania"
+                    closable
+                />
+            ) : null}
             <Form.Item>
                 {form.getFieldDecorator("email", {
                     rules: [requiredRule, emailRule],
@@ -51,4 +66,4 @@ const LoginForm: FC<FormComponentProps> = ({form}) => {
     );
 };
 
-export default Form.create()(LoginForm);
+export default Form.create<LoginFormProps>()(LoginForm);
