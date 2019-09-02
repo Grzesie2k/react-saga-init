@@ -9,7 +9,7 @@ const LoginFormPage: FC = () => {
     return (
         <BlankLayout title="Logowanie">
             <Card title="Logowanie" className={styles.card}>
-                <LoginForm invalidCredentials />
+                <LoginForm invalidCredentials loading />
             </Card>
         </BlankLayout>
     );

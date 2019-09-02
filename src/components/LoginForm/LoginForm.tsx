@@ -7,12 +7,17 @@ import { emailRule, requiredRule } from "../../validationRules";
 import styles from "./loginForm.module.css";
 
 interface LoginFormStateProps {
+    loading: boolean;
     invalidCredentials: boolean;
 }
 
-type LoginFormProps = LoginFormStateProps & FormComponentProps;
+interface LoginFormActionProps {
+    // onSubmit(email: string, password: string): void;
+}
 
-const LoginForm: FC<LoginFormProps> = ({form, invalidCredentials}) => {
+type LoginFormProps = LoginFormStateProps & LoginFormActionProps & FormComponentProps;
+
+const LoginForm: FC<LoginFormProps> = ({form, invalidCredentials, loading}) => {
     return (
         <Form>
             {invalidCredentials ? (
@@ -33,6 +38,7 @@ const LoginForm: FC<LoginFormProps> = ({form, invalidCredentials}) => {
                         autoComplete="username"
                         placeholder="Adres e-mail"
                         prefix={<Icon type="user"/>}
+                        readOnly={loading}
                     />
                 )}
             </Form.Item>
@@ -45,6 +51,7 @@ const LoginForm: FC<LoginFormProps> = ({form, invalidCredentials}) => {
                         autoComplete="current-password"
                         placeholder="Hasło"
                         prefix={<Icon type="lock"/>}
+                        readOnly={loading}
                     />
                 )}
             </Form.Item>
@@ -53,12 +60,17 @@ const LoginForm: FC<LoginFormProps> = ({form, invalidCredentials}) => {
                     valuePropName: "checked",
                     initialValue: true,
                 })(
-                    <Checkbox>Zapmiętaj mnie</Checkbox>
+                    <Checkbox disabled={loading}>Zapmiętaj mnie</Checkbox>
                 )}
                 <a className={styles.forgot} href="/">
                     Przypomnij hasło
                 </a>
-                <Button type="primary" htmlType="submit" className={styles.button}>
+                <Button
+                    type="primary"
+                    htmlType="submit"
+                    className={styles.button}
+                    loading={loading}
+                >
                     Zaloguj się
                 </Button>
             </Form.Item>
