@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginFormPage from "../LoginForm/LoginFormPage";
+import LoginFormPage from "../LoginFormPage/LoginFormPage";
 
 const App: React.FC = () => {
     return (
