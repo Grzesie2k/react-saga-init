@@ -3,6 +3,7 @@ import { AxiosResponse } from "axios";
 import { Component, default as React } from "react";
 import http from "../../http";
 import { ErrorScreenType } from "./model/ErrorScreenType";
+import styles from "./errorScreen.module.css";
 
 export interface ErrorScreenStateProps {
     error: ErrorScreenType | null;
@@ -67,6 +68,17 @@ export default class ErrorScreen extends Component<Props, State> {
             </Button>
         );
 
+        const ignoreButton = process.env.NODE_ENV === "production" ? null : (
+            <Button
+                className={styles.close}
+                type="dashed"
+                icon="close"
+                onClick={this.props.hideError}
+            />
+        );
+
+        const buttons = <>{reloadButton} {ignoreButton}</>;
+
         switch (renderError ? ErrorScreenType.CLIENT_ERROR : error) {
             case ErrorScreenType.CLIENT_ERROR:
                 return (
@@ -74,7 +86,7 @@ export default class ErrorScreen extends Component<Props, State> {
                         status="error"
                         title="Aplikacja przestała działać"
                         subTitle="Wystąpił nieobsługiwany wyjątek w aplikacji uniemożliwiający jej dalsze działanie."
-                        extra={reloadButton}
+                        extra={buttons}
                     />
                 );
             case ErrorScreenType.SERVER_ERROR:
@@ -83,7 +95,7 @@ export default class ErrorScreen extends Component<Props, State> {
                         status="500"
                         title="Błąd serwera"
                         subTitle="Wystąpił problem z serwerem aplikacji."
-                        extra={reloadButton}
+                        extra={buttons}
                     />
                 );
         }
