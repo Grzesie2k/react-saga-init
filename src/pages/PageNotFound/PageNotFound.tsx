@@ -1,7 +1,7 @@
 import { Button, Result } from "antd";
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import BlankLayout from "../BlankLayout/BlankLayout";
+import BlankLayout from "../../layouts/BlankLayout/BlankLayout";
 import React from "react";
 
 const PageNotFound: FC = () => (

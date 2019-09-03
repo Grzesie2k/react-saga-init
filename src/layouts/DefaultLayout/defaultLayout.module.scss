@@ -1,0 +1,54 @@
+.layout {
+  min-height: 100vh;
+}
+
+.header {
+  background: white;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+  padding-left: 0;
+  z-index: 1;
+
+  :global .ant-menu-item .anticon {
+    margin: 0;
+  }
+}
+
+.logo {
+  color: white;
+  text-align: center;
+  height: 64px;
+  width: 100%;
+  margin: 0 0 -4px;
+  line-height: 64px;
+}
+
+.topMenu {
+  float: right;
+  line-height: 64px;
+  background: transparent;
+}
+
+.content {
+  margin: 24px 24px 0;
+}
+
+.sider {
+  box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
+  z-index: 2;
+}
+
+.siderTrigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #1890ff;
+  }
+}
+
+.pageHeader {
+  background: white;
+}

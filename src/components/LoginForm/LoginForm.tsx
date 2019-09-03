@@ -1,25 +1,33 @@
 import { Alert, Button, Form, Icon, Input } from "antd";
 import Checkbox from "antd/es/checkbox";
 import { FormComponentProps } from "antd/lib/form";
+import { push } from "connected-react-router";
 import * as React from "react";
-import { FC } from "react";
+import { FC, FormEvent, useCallback, useState } from "react";
+import { batch, useDispatch } from "react-redux";
 import { emailRule, requiredRule } from "../../validationRules";
+import { startSession } from "../Session/store/sessionActions";
 import styles from "./loginForm.module.css";
 
-interface LoginFormStateProps {
-    loading: boolean;
-    invalidCredentials: boolean;
-}
+const LoginForm: FC<FormComponentProps> = ({form}) => {
+    const dispatch = useDispatch();
+    const [loading, setLoading] = useState<boolean>(false);
+    const [invalidCredentials, setInvalidCredentials] = useState<boolean>(false);
+    const onSubmit = useCallback((event: FormEvent) => form.validateFields((errors, values) => {
+        event.preventDefault();
+        if (errors) return;
+        setLoading(true);
+        setInvalidCredentials(false);
+        setLoading(false);
+        const token = btoa(`${values.email}:${values.password}`);
+        batch(() => {
+            dispatch(startSession({token}));
+            dispatch(push("/"));
+        });
+    }), [form, dispatch, setLoading, setInvalidCredentials]);
 
-interface LoginFormActionProps {
-    // onSubmit(email: string, password: string): void;
-}
-
-type LoginFormProps = LoginFormStateProps & LoginFormActionProps & FormComponentProps;
-
-const LoginForm: FC<LoginFormProps> = ({form, invalidCredentials, loading}) => {
     return (
-        <Form>
+        <Form onSubmit={onSubmit}>
             {invalidCredentials ? (
                 <Alert
                     className={styles.message}
@@ -78,4 +86,4 @@ const LoginForm: FC<LoginFormProps> = ({form, invalidCredentials, loading}) => {
     );
 };
 
-export default Form.create<LoginFormProps>()(LoginForm);
+export default Form.create()(LoginForm);
