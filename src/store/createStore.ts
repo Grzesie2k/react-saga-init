@@ -31,7 +31,7 @@ export default (history: History, debug: boolean, preloadedState: DeepPartial<St
     if ((module as any).hot) {
         (module as any).hot.accept("./storeSaga", async () => {
             sagaTask.cancel();
-            await sagaTask.toPromise();
+            await sagaTask.toPromise().catch(() => null);
             sagaTask = sagaMiddleware.run(storeSaga)
         });
     }
