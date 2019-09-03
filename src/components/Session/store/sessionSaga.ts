@@ -1,6 +1,6 @@
 import { push } from "connected-react-router";
 import { call, put, select, takeEvery } from "redux-saga/effects";
-import { getCurrentPathname } from "../../App/store/appSelectors";
+import { getCurrentPathname } from "../../../store/modules/router/routerSelectors";
 import sessionPersister from "../services/sessionPersister";
 import { StartSessionAction } from "./sessionActions";
 import { hasSession } from "./sessionSelectors";
