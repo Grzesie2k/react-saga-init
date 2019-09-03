@@ -2,8 +2,10 @@ import { Icon, Layout, Menu, PageHeader } from "antd";
 import { PageHeaderProps } from "antd/lib/page-header";
 import { default as React, FC, ReactNode, useCallback, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
+import { clearSession } from "../../components/Session/store/sessionActions";
 import SideMenu from "../../components/SideMenu/SideMenu";
 import styles from "./defaultLayout.module.scss";
 
@@ -15,8 +17,11 @@ interface DefaultLayoutProps {
 const {Header, Content, Sider} = Layout;
 
 const DefaultLayout: FC<DefaultLayoutProps> = (props) => {
+    const dispatch = useDispatch();
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const toggleCollapsed = useCallback(() => setCollapsed(!collapsed), [setCollapsed, collapsed]);
+    const logout = useCallback(() => dispatch(clearSession()), [dispatch]);
+
     const pageHeader = props.pageHeader ? (
         <PageHeader
             title={props.title}
@@ -48,9 +53,12 @@ const DefaultLayout: FC<DefaultLayoutProps> = (props) => {
                         <Menu.Item>
                             <Icon type="notification"/>
                         </Menu.Item>
-                        <Menu.Item>
-                            <Icon type="user"/>
-                        </Menu.Item>
+                        <Menu.SubMenu title={<Icon type="user"/>}>
+                            <Menu.Item onClick={logout}>
+                                <Icon type="logout" />
+                                <span>Wyloguj</span>
+                            </Menu.Item>
+                        </Menu.SubMenu>
                     </Menu>
                 </Header>
                 <Content>
