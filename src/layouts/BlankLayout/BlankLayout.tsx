@@ -26,7 +26,7 @@ const BlankLayout: FC<BlankLayoutProps> = (props) => {
                 <title>{props.title}</title>
             </Helmet>
             <Layout className={styles.wrapper}>
-                <Content style={contentStyle}>
+                <Content className={styles.content} style={contentStyle}>
                     {props.children}
                 </Content>
             </Layout>

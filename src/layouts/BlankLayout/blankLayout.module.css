@@ -6,3 +6,6 @@
     justify-content: center;
     flex-direction: row;
 }
+.content {
+    margin: 1rem 0;
+}
