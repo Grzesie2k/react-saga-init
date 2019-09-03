@@ -8,8 +8,12 @@
   padding-left: 0;
   z-index: 1;
 
-  :global .ant-menu-item .anticon {
-    margin: 0;
+  :global {
+    .ant-menu-item, .ant-menu-submenu-title {
+      .anticon {
+        margin: 0;
+      }
+    }
   }
 }
 
