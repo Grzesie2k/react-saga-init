@@ -35,7 +35,13 @@ const DefaultLayout: FC<DefaultLayoutProps> = (props) => {
             <Helmet>
                 <title>{props.title}</title>
             </Helmet>
-            <Sider className={styles.sider} collapsed={collapsed} onCollapse={setCollapsed}>
+            <Sider
+                className={styles.sider}
+                collapsed={collapsed}
+                onCollapse={setCollapsed}
+                breakpoint="md"
+                onBreakpoint={setCollapsed}
+            >
                 <Link to="/">
                     <h1 className={styles.logo}>react-init</h1>
                 </Link>
