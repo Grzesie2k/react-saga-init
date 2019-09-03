@@ -16,3 +16,4 @@
  * catch all errors and unhandled promises rejections and display error page
  * display mask with message when going offline
  * catch all 5xx API responses and display error page
+ * Hot Module Replacement (HMR) for components, Redux reducer and saga
