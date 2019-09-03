@@ -40,6 +40,7 @@ const DefaultLayout: FC<DefaultLayoutProps> = (props) => {
                 collapsed={collapsed}
                 onCollapse={setCollapsed}
                 breakpoint="md"
+                width={256}
                 onBreakpoint={setCollapsed}
             >
                 <Link to="/">
