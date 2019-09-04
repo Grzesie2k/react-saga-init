@@ -8,7 +8,6 @@ interface UserAvatarProps {
 }
 
 const UserAvatar: FC<UserAvatarProps> = ({userId, name, surname}) => {
-    console.log(userId);
     const style = useMemo<CSSProperties>(() => {
         const background = `${userId.slice(0, 6)}`;
         const color = (background.match(/.{2}/g) as string[])
