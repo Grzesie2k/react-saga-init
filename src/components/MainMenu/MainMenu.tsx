@@ -1,7 +1,6 @@
 import { Icon, Menu } from "antd";
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
-import styles from "./mainMenu.module.css";
 
 interface MainMenuProps {
     currentUrl: string;
@@ -13,7 +12,6 @@ const MainMenu: FC<MainMenuProps> = (props) => {
             defaultSelectedKeys={['/']}
             selectedKeys={[props.currentUrl]}
             theme="dark"
-            className={styles.menu}
         >
             <Menu.Item key="/">
                 <Link to="/">

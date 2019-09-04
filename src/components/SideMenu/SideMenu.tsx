@@ -2,7 +2,7 @@ import { Drawer, Layout } from "antd";
 import { CSSProperties, default as React, FC, useCallback } from "react";
 import { Link } from "react-router-dom";
 import useMedia from "use-media";
-import styles from "../../layouts/DefaultLayout/defaultLayout.module.scss";
+import styles from "./sideMenu.module.less";
 import MainMenu from "../MainMenu/MainMenu";
 
 const {Sider} = Layout;
@@ -17,6 +17,15 @@ const SideMenu: FC<SideMenuProps> = ({collapsed, setCollapsed}) => {
     const isMobile = useMedia({maxWidth: 768}, false);
     const collapse = useCallback(() => setCollapsed(true), [setCollapsed]);
 
+    const menu = (
+        <div className={styles.menu}>
+            <Link to="/">
+                <h1 className={styles.logo}>react-init</h1>
+            </Link>
+            <MainMenu currentUrl="/"/>
+        </div>
+    );
+
     return isMobile ? (
         <Drawer
             visible={!collapsed}
@@ -25,10 +34,7 @@ const SideMenu: FC<SideMenuProps> = ({collapsed, setCollapsed}) => {
             placement="left"
             closable={false}
         >
-            <Link to="/">
-                <h1 className={styles.logo}>react-init</h1>
-            </Link>
-            <MainMenu currentUrl="/"/>
+            {menu}
         </Drawer>
     ) : (
         <Sider
@@ -39,10 +45,7 @@ const SideMenu: FC<SideMenuProps> = ({collapsed, setCollapsed}) => {
             width={256}
             onBreakpoint={setCollapsed}
         >
-            <Link to="/">
-                <h1 className={styles.logo}>react-init</h1>
-            </Link>
-            <MainMenu currentUrl="/"/>
+            {menu}
         </Sider>
     );
 };

@@ -3,7 +3,7 @@ import * as React from "react";
 import { FC } from "react";
 import BlankLayout from "../../layouts/BlankLayout/BlankLayout";
 import LoginForm from "../../components/LoginForm/LoginForm";
-import styles from "./loginFormPage.module.css";
+import styles from "./loginFormPage.module.less";
 
 const LoginFormPage: FC = () => {
     return (

@@ -1,4 +1,3 @@
-import 'antd/dist/antd.css';
 import { createBrowserHistory } from 'history';
 import React, { ComponentType } from 'react';
 import ReactDOM from 'react-dom';

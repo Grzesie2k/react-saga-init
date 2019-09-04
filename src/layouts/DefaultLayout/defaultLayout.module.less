@@ -1,3 +1,5 @@
+@import "~antd/es/style/themes/default";
+
 .layout {
   min-height: 100vh;
   min-width: 320px;
@@ -19,16 +21,6 @@
   }
 }
 
-.logo {
-  color: white;
-  text-align: center;
-  height: 64px;
-  width: 100%;
-  margin: 0 0 -4px;
-  line-height: 64px;
-  background: #001529;
-}
-
 .topMenu {
   float: right;
   line-height: 64px;
@@ -39,11 +31,6 @@
   margin: 24px 24px 0;
 }
 
-.sider {
-  box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
-  z-index: 2;
-}
-
 .siderTrigger {
   font-size: 18px;
   line-height: 64px;
@@ -52,7 +39,7 @@
   transition: color 0.3s;
 
   &:hover {
-    color: #1890ff;
+    color: @link-hover-color;
   }
 }
 

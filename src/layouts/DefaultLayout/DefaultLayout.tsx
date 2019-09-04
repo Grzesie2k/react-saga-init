@@ -3,19 +3,17 @@ import { PageHeaderProps } from "antd/lib/page-header";
 import { default as React, FC, ReactNode, useCallback, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import { clearSession } from "../../components/Session/store/sessionActions";
-import MainMenu from "../../components/MainMenu/MainMenu";
 import SideMenu from "../../components/SideMenu/SideMenu";
-import styles from "./defaultLayout.module.scss";
+import styles from "./defaultLayout.module.less";
 
 interface DefaultLayoutProps {
     title: string;
     pageHeader?: Partial<PageHeaderProps> & {children?: ReactNode};
 }
 
-const {Header, Content, Sider} = Layout;
+const {Header, Content} = Layout;
 
 const DefaultLayout: FC<DefaultLayoutProps> = (props) => {
     const dispatch = useDispatch();
