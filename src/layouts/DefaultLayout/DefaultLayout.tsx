@@ -3,6 +3,7 @@ import { PageHeaderProps } from "antd/lib/page-header";
 import { default as React, FC, ReactNode, useCallback, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useDispatch } from "react-redux";
+import CurrentUserAvatar from "../../components/CurrentUser/CurrentUserAvatar";
 import Footer from "../../components/Footer/Footer";
 import { clearSession } from "../../components/Session/store/sessionActions";
 import SideMenu from "../../components/SideMenu/SideMenu";
@@ -46,11 +47,11 @@ const DefaultLayout: FC<DefaultLayoutProps> = (props) => {
                         className={styles.siderTrigger}
                     />
                     <Menu mode="horizontal" selectedKeys={[]} className={styles.topMenu}>
-                        <Menu.Item>
+                        <Menu.Item aria-label="Powiadomienia">
                             <Icon type="notification"/>
                         </Menu.Item>
-                        <Menu.SubMenu title={<Icon type="user"/>}>
-                            <Menu.Item onClick={logout}>
+                        <Menu.SubMenu title={<CurrentUserAvatar />}>
+                            <Menu.Item onClick={logout} aria-label="Menu użytkownika">
                                 <Icon type="logout" />
                                 <span>Wyloguj</span>
                             </Menu.Item>
