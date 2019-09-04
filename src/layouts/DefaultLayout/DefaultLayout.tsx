@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import { clearSession } from "../../components/Session/store/sessionActions";
 import MainMenu from "../../components/MainMenu/MainMenu";
+import SideMenu from "../../components/SideMenu/SideMenu";
 import styles from "./defaultLayout.module.scss";
 
 interface DefaultLayoutProps {
@@ -35,19 +36,10 @@ const DefaultLayout: FC<DefaultLayoutProps> = (props) => {
             <Helmet>
                 <title>{props.title}</title>
             </Helmet>
-            <Sider
-                className={styles.sider}
-                collapsed={collapsed}
-                onCollapse={setCollapsed}
-                breakpoint="md"
-                width={256}
-                onBreakpoint={setCollapsed}
-            >
-                <Link to="/">
-                    <h1 className={styles.logo}>react-init</h1>
-                </Link>
-                <MainMenu currentUrl="/"/>
-            </Sider>
+           <SideMenu
+               collapsed={collapsed}
+               setCollapsed={setCollapsed}
+           />
             <Layout>
                 <Header className={styles.header}>
                     <Icon
