@@ -1,9 +1,9 @@
 import * as React from "react";
 import { ComponentType, FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import http from "../../http";
-import { clearSession, startSession } from "./store/sessionActions";
-import { getSessionToken } from "./store/sessionSelectors";
+import http from "../../../http";
+import { clearSession, startSession } from "../store/sessionActions";
+import { getSessionToken } from "../store/sessionSelectors";
 
 export default function <Props>(WrappedComponent: ComponentType<Props>) {
     const Component: FC<Props> = (props) => {
@@ -50,7 +50,7 @@ export default function <Props>(WrappedComponent: ComponentType<Props>) {
         return <WrappedComponent {...props}/>;
     };
 
-    Component.displayName = `withSession(${WrappedComponent.displayName || WrappedComponent.name})`;
+    Component.displayName = `withHttpSessionProvider(${WrappedComponent.displayName || WrappedComponent.name})`;
 
     return Component;
 }
