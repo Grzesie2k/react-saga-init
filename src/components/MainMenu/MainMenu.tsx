@@ -2,11 +2,11 @@ import { Icon, Menu } from "antd";
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 
-interface SideMenuProps {
+interface MainMenuProps {
     currentUrl: string;
 }
 
-const SideMenu: FC<SideMenuProps> = (props) => {
+const MainMenu: FC<MainMenuProps> = (props) => {
     return (
         <Menu defaultSelectedKeys={['/']} selectedKeys={[props.currentUrl]} theme="dark">
             <Menu.Item key="/">
@@ -25,4 +25,4 @@ const SideMenu: FC<SideMenuProps> = (props) => {
     );
 };
 
-export default SideMenu;
+export default MainMenu;

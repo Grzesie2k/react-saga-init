@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import { clearSession } from "../../components/Session/store/sessionActions";
-import SideMenu from "../../components/SideMenu/SideMenu";
+import MainMenu from "../../components/MainMenu/MainMenu";
 import styles from "./defaultLayout.module.scss";
 
 interface DefaultLayoutProps {
@@ -46,7 +46,7 @@ const DefaultLayout: FC<DefaultLayoutProps> = (props) => {
                 <Link to="/">
                     <h1 className={styles.logo}>react-init</h1>
                 </Link>
-                <SideMenu currentUrl="/"/>
+                <MainMenu currentUrl="/"/>
             </Sider>
             <Layout>
                 <Header className={styles.header}>
