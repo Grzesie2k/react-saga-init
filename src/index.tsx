@@ -6,7 +6,7 @@ import { compose } from "redux";
 import App from './components/App/App';
 import withErrorScreen from "./components/ErrorScreen/withErrorScreen";
 import withOfflineMask from "./components/OfflineMask/withOfflineMask";
-import withSession from "./components/Session/hoc/withHttpSessionProvider";
+import withSession from "./hoc/withHttpSessionProvider";
 import withAntdConfig from "./hoc/withAntdConfig";
 import withConnectedRouter from "./hoc/withConnectedRouter";
 import withHelmet from "./hoc/withHelmet";

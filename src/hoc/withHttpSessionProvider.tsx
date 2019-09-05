@@ -1,9 +1,9 @@
 import * as React from "react";
 import { ComponentType, FC, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import http from "../../../http";
-import { clearSession, startSession } from "../store/sessionActions";
-import { getSessionToken } from "../store/sessionSelectors";
+import http from "../http";
+import { clearSession, startSession } from "../components/Session/store/sessionActions";
+import { getSessionToken } from "../components/Session/store/sessionSelectors";
 
 export default function <Props>(WrappedComponent: ComponentType<Props>) {
     const Component: FC<Props> = (props) => {
