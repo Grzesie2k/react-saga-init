@@ -1,4 +1,4 @@
-import { Icon, Layout, Menu, PageHeader } from "antd";
+import { Button, Icon, Layout, Menu, PageHeader } from "antd";
 import { PageHeaderProps } from "antd/lib/page-header";
 import { default as React, FC, ReactNode, useCallback, useState } from "react";
 import { Helmet } from "react-helmet-async";
@@ -11,7 +11,7 @@ import styles from "./defaultLayout.module.less";
 
 interface DefaultLayoutProps {
     title: string;
-    pageHeader?: Partial<PageHeaderProps> & {children?: ReactNode};
+    pageHeader?: Partial<PageHeaderProps> & { children?: ReactNode };
 }
 
 const {Header, Content} = Layout;
@@ -35,24 +35,29 @@ const DefaultLayout: FC<DefaultLayoutProps> = (props) => {
             <Helmet>
                 <title>{props.title}</title>
             </Helmet>
-           <SideMenu
-               collapsed={collapsed}
-               setCollapsed={setCollapsed}
-           />
+            <SideMenu
+                collapsed={collapsed}
+                setCollapsed={setCollapsed}
+            />
             <Layout>
                 <Header className={styles.header}>
-                    <Icon
-                        type={`menu-${collapsed ? 'un' : ''}fold`}
+                    <Button
+                        type="link"
                         onClick={toggleCollapsed}
-                        className={styles.siderTrigger}
-                    />
+                        aria-label={collapsed ? "Pokaż menu główne" : "Ukryj menu główne"}
+                    >
+                        <Icon
+                            type={`menu-${collapsed ? 'un' : ''}fold`}
+                            className={styles.siderTrigger}
+                        />
+                    </Button>
                     <Menu mode="horizontal" selectedKeys={[]} className={styles.topMenu}>
                         <Menu.Item aria-label="Powiadomienia">
                             <Icon type="notification"/>
                         </Menu.Item>
-                        <Menu.SubMenu title={<CurrentUserAvatar />}>
+                        <Menu.SubMenu title={<CurrentUserAvatar/>}>
                             <Menu.Item onClick={logout} aria-label="Menu użytkownika">
-                                <Icon type="logout" />
+                                <Icon type="logout"/>
                                 <span>Wyloguj</span>
                             </Menu.Item>
                         </Menu.SubMenu>
