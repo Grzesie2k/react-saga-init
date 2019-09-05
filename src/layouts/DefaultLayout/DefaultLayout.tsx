@@ -1,12 +1,10 @@
-import { Button, Icon, Layout, Menu, PageHeader } from "antd";
+import { Button, Icon, Layout, PageHeader } from "antd";
 import { PageHeaderProps } from "antd/lib/page-header";
 import { default as React, FC, ReactNode, useCallback, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { useDispatch } from "react-redux";
-import CurrentUserAvatar from "../../components/CurrentUser/CurrentUserAvatar";
 import Footer from "../../components/Footer/Footer";
-import { clearSession } from "../../components/Session/store/sessionActions";
 import SideMenu from "../../components/SideMenu/SideMenu";
+import UserMenu from "./components/UserMenu/UserMenu";
 import styles from "./defaultLayout.module.less";
 
 interface DefaultLayoutProps {
@@ -17,10 +15,8 @@ interface DefaultLayoutProps {
 const {Header, Content} = Layout;
 
 const DefaultLayout: FC<DefaultLayoutProps> = (props) => {
-    const dispatch = useDispatch();
     const [collapsed, setCollapsed] = useState<boolean>(false);
     const toggleCollapsed = useCallback(() => setCollapsed(!collapsed), [setCollapsed, collapsed]);
-    const logout = useCallback(() => dispatch(clearSession()), [dispatch]);
 
     const pageHeader = props.pageHeader ? (
         <PageHeader
@@ -29,6 +25,19 @@ const DefaultLayout: FC<DefaultLayoutProps> = (props) => {
             className={`${styles.pageHeader} ${props.pageHeader.className}`}
         />
     ) : null;
+
+    const sideMenuTrigger = (
+        <Button
+            type="link"
+            onClick={toggleCollapsed}
+            aria-label={collapsed ? "Pokaż menu główne" : "Ukryj menu główne"}
+        >
+            <Icon
+                type={`menu-${collapsed ? 'un' : ''}fold`}
+                className={styles.siderTrigger}
+            />
+        </Button>
+    );
 
     return (
         <Layout className={styles.layout}>
@@ -41,27 +50,8 @@ const DefaultLayout: FC<DefaultLayoutProps> = (props) => {
             />
             <Layout>
                 <Header className={styles.header}>
-                    <Button
-                        type="link"
-                        onClick={toggleCollapsed}
-                        aria-label={collapsed ? "Pokaż menu główne" : "Ukryj menu główne"}
-                    >
-                        <Icon
-                            type={`menu-${collapsed ? 'un' : ''}fold`}
-                            className={styles.siderTrigger}
-                        />
-                    </Button>
-                    <Menu mode="horizontal" selectedKeys={[]} className={styles.topMenu}>
-                        <Menu.Item aria-label="Powiadomienia">
-                            <Icon type="notification"/>
-                        </Menu.Item>
-                        <Menu.SubMenu title={<CurrentUserAvatar/>}>
-                            <Menu.Item onClick={logout} aria-label="Menu użytkownika">
-                                <Icon type="logout"/>
-                                <span>Wyloguj</span>
-                            </Menu.Item>
-                        </Menu.SubMenu>
-                    </Menu>
+                    {sideMenuTrigger}
+                    <UserMenu />
                 </Header>
                 <Content>
                     {pageHeader}
