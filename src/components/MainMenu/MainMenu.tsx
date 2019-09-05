@@ -19,12 +19,6 @@ const MainMenu: FC<MainMenuProps> = (props) => {
                     <span>Strona główna</span>
                 </Link>
             </Menu.Item>
-            <Menu.Item key="/login">
-                <Link to="/login">
-                    <Icon type="user"/>
-                    <span>Logowanie</span>
-                </Link>
-            </Menu.Item>
         </Menu>
     );
 };
