@@ -3,12 +3,6 @@ import { useSelector } from "react-redux";
 import { Redirect, Route, RouteProps } from "react-router";
 import { hasSession } from "./Session/store/sessionSelectors";
 
-interface Props {
-    redirectTo: string;
-
-    condition(): boolean;
-}
-
 export const createConditionalRoute = (condition: () => boolean, redirectTo: string): FC<RouteProps> => {
     return (props) => {
         if (condition()) {
