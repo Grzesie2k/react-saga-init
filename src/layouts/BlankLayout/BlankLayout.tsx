@@ -2,7 +2,7 @@ import { Layout } from "antd";
 import * as React from "react";
 import { CSSProperties, FC, useMemo } from "react";
 import { Helmet } from "react-helmet-async";
-import Footer from "../../components/Footer/Footer";
+import Footer from "../components/Footer/Footer";
 import styles from "./blankLayout.module.css";
 
 const {Content} = Layout;

@@ -3,9 +3,9 @@ import React, { ComponentType } from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from "react-hot-loader";
 import { compose } from "redux";
-import App from './components/App/App';
+import Router from './components/Router/Router';
 import withErrorScreen from "./components/ErrorScreen/withErrorScreen";
-import withOfflineMask from "./components/OfflineMask/withOfflineMask";
+import withOfflineMask from "./hoc/withOfflineMask/withOfflineMask";
 import withSession from "./hoc/withHttpSessionProvider";
 import withAntdConfig from "./hoc/withAntdConfig";
 import withConnectedRouter from "./hoc/withConnectedRouter";
@@ -33,7 +33,7 @@ const renderer: (c: ComponentType) => ComponentType = compose(
 );
 
 const render = () => {
-    const Main = renderer(App);
+    const Main = renderer(Router);
 
     ReactDOM.render((
         <AppContainer>
@@ -43,7 +43,7 @@ const render = () => {
 };
 
 if ((module as any).hot) {
-    (module as any).hot.accept(`./components/App/App`, render);
+    (module as any).hot.accept(`./components/Router/Router`, render);
 }
 
 render();

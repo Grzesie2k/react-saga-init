@@ -2,8 +2,8 @@ import { Button, Icon, Layout, PageHeader } from "antd";
 import { PageHeaderProps } from "antd/lib/page-header";
 import { default as React, FC, ReactNode, useCallback, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import Footer from "../../components/Footer/Footer";
-import SideMenu from "../../components/SideMenu/SideMenu";
+import Footer from "../components/Footer/Footer";
+import SideMenu from "./components/SideMenu/SideMenu";
 import UserMenu from "./components/UserMenu/UserMenu";
 import styles from "./defaultLayout.module.less";
 

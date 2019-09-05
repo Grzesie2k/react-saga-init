@@ -1,13 +1,13 @@
 import React, { lazy, Suspense } from 'react';
 import { hot } from "react-hot-loader";
 import { Route, Switch } from "react-router-dom";
-import { AuthRoute, SecureRoute } from "../conditionalRoute";
+import { AuthRoute, SecureRoute } from "./components/Route";
 
 const DashboardPage = lazy(() => import("../../pages/DashboardPage/DashboardPage"));
 const LoginFormPage = lazy(() => import("../../pages/LoginFormPage/LoginFormPage"));
 const PageNotFound = lazy(() => import("../../pages/PageNotFound/PageNotFound"));
 
-const App: React.FC = () => {
+const Router: React.FC = () => {
     return (
         <Suspense fallback={null}>
             <Switch>
@@ -19,4 +19,4 @@ const App: React.FC = () => {
     );
 };
 
-export default hot(module)(App);
+export default hot(module)(Router);
