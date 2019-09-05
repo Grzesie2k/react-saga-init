@@ -3,9 +3,9 @@ import { hot } from "react-hot-loader";
 import { Route, Switch } from "react-router-dom";
 import { AuthRoute, SecureRoute } from "./components/Route";
 
-const DashboardPage = lazy(() => import("../../pages/DashboardPage/DashboardPage"));
+const DashboardPage = lazy(() => import(`../../pages/DashboardPage/DashboardPage`));
 const LoginFormPage = lazy(() => import("../../pages/LoginFormPage/LoginFormPage"));
-const PageNotFound = lazy(() => import("../../pages/PageNotFound/PageNotFound"));
+const PageNotFound = lazy(() => import("../../pages/NotFoundPage/NotFoundPage"));
 
 const Router: React.FC = () => {
     return (

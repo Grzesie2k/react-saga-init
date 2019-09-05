@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import BlankLayout from "../../layouts/BlankLayout/BlankLayout";
 import React from "react";
 
-const PageNotFound: FC = () => (
+const NotFoundPage: FC = () => (
     <BlankLayout title="Strona nie istnieje">
         <Result
             status="404"
@@ -21,4 +21,4 @@ const PageNotFound: FC = () => (
     </BlankLayout>
 );
 
-export default PageNotFound;
+export default NotFoundPage;
